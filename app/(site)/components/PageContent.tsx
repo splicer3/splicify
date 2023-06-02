@@ -9,7 +9,7 @@ interface PageContentProps {
 }
 
 const PageContent: React.FC<PageContentProps> = ({
-    songs
+    songs,
 }) => {
     const onPlay = useOnPlay(songs);
 

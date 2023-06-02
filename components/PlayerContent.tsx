@@ -118,6 +118,9 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                         bg-white
                         p-1
                         cursor-pointer
+                        hover:scale-95
+                        hover:opacity-75
+                        transition
                     "
                 >
                     <Icon size={30} className="text-black"/>
@@ -132,6 +135,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                             text-neutral-400
                             cursor-pointer
                             hover:text-white
+                            hover:scale-110
                             transition
                         "
                     />
@@ -148,9 +152,11 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                         bg-white
                         p-1
                         cursor-pointer
+                        hover:scale-105
+                        transition
                     "
                 >
-                    <Icon size={30} className="text-black"/>
+                    <Icon size={30} className="text-black right-4"/>
                 </div>
                 <div>
                     <AiFillStepForward
@@ -160,6 +166,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                             text-neutral-400
                             cursor-pointer
                             hover:text-white
+                            hover:scale-110
                             transition
                         "
                     />
@@ -169,7 +176,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                 <div className="flex items-center gap-x-2 w-[120px]">
                     <VolumeIcon
                         onClick={toggleMute}
-                        className="cursor-pointer"
+                        className="cursor-pointer hover:opacity-75 hover:scale-95 transition"
                         size={34}
                     />
                     <Slider

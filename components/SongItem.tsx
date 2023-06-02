@@ -5,10 +5,11 @@ import Image from "next/image";
 import useLoadImage from "@/hooks/useLoadImage";
 import { Song } from "@/types";
 import PlayButton from "./PlayButton";
+import LikeButton from "./LikeButton";
 
 interface SongItemProps {
     data: Song;
-    onClick: (id: string) => void
+    onClick: (id: string) => void;
 };
 
 const SongItem: React.FC<SongItemProps> = ({
@@ -19,7 +20,6 @@ const SongItem: React.FC<SongItemProps> = ({
 
     return (
         <div
-            onClick={() => onClick(data.id)}
             className="
                 relative
                 group
@@ -35,6 +35,7 @@ const SongItem: React.FC<SongItemProps> = ({
                 hover:bg-neutral-400/10
                 transition
                 p-3
+                group/songitem
             "
         >
             <div
@@ -70,8 +71,12 @@ const SongItem: React.FC<SongItemProps> = ({
                 <p className="text-neutral-400 text-sm pb-4 w-full truncate">
                     By {data.author}
                 </p>
+                <LikeButton songId={data.id}/>
             </div>
-            <div className="absolute bottom-24 right-5">
+            <div 
+                className="absolute bottom-24 right-5"
+                onClick={() => onClick(data.id)}
+            >
                 <PlayButton />
             </div>
         </div>
