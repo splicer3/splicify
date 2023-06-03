@@ -49,8 +49,10 @@ const Header: React.FC<HeaderProps> = ({
         <div
         className={twMerge(`
             h-fit
-            bg-gradient-to-b
-            from-emerald-800
+            bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))]
+            from-teal-400
+            via-indigo-900
+            to-70%
             p-6
         `,
             className)}
@@ -99,6 +101,7 @@ const Header: React.FC<HeaderProps> = ({
                 </div>
                 <div className="flex md:hidden gap-x-2 items-center">
                     <button
+                        onClick={() => router.push('/')}
                         className="
                                 rounded-full
                                 p-2
@@ -112,6 +115,7 @@ const Header: React.FC<HeaderProps> = ({
                         <HiHome className="text-black" size={20} />
                     </button>
                     <button
+                        onClick={() => router.push('/search')}
                         className="
                                 rounded-full
                                 p-2

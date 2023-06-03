@@ -136,45 +136,28 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
     
     return (
 
-        <div className="grid grid-cols-3 h-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 h-full">
             <div className="flex h-full justify-start">
                 <div className="flex items-center gap-x-4">
                     <MediaItem data={song}/>
                     <LikeButton songId={song.id}/>
                 </div>
             </div>
-            <div className="flex md:hidden col-auto w-full justify-center items-center">
-                <div
-                    onClick={handlePlay}
-                    className="
-                        h-10
-                        w-10
-                        flex
-                        items-center
-                        justfy-center
-                        rounded-full
-                        bg-white
-                        p-1
-                        cursor-pointer
-                        hover:scale-95
-                        hover:opacity-75
-                        transition
-                    "
-                >
-                    <Icon size={30} className="text-black"/>
-                </div>
-            </div>
-            <div className="h-full flex flex-col justify-center justify-items-center">
-                <div className="hidden h-full md:flex justify-center items-center w-full max-w-[722px] gap-x-6">
+            <div className="h-full w-full flex flex-col justify-center justify-items-center">
+                <div className="h-full flex justify-center items-center w-full max-w-[722px] gap-x-6">
                 <div>
                     <AiFillStepBackward
                         size={30}
                         onClick={onPlayPrevious}
                         className="
-                            text-neutral-400
+                            text-white
+                            md:text-neutral-400
                             cursor-pointer
-                            hover:text-white
-                            hover:scale-110
+                            md:hover:text-white
+                            hover:scale-90
+                            hover:opacity-75
+                            md:hover:scale-110
+                            md:hover:opacity-100
                             transition
                         "
                     />
@@ -191,7 +174,10 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                         bg-white
                         p-1
                         cursor-pointer
-                        hover:scale-105
+                        hover:scale-95
+                        hover:opacity-75
+                        md:hover:scale-105
+                        md:hover:opacity-100
                         transition
                     "
                 >
@@ -202,10 +188,14 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                         onClick={onPlayNext}
                         size={30}
                         className="
-                            text-neutral-400
+                            text-white
+                            md:text-neutral-400
                             cursor-pointer
-                            hover:text-white
-                            hover:scale-110
+                            md:hover:text-white
+                            hover:scale-90
+                            hover:opacity-75
+                            md:hover:scale-110
+                            md:hover:opacity-100
                             transition
                         "
                     />

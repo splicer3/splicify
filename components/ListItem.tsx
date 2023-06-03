@@ -71,7 +71,9 @@ const ListItem: React.FC<ListItemProps> = ({
                     flex
                     items-center
                     justify-center
-                    bg-green-500
+                    bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] 
+                    from-teal-300
+                    to-sky-800
                     p-4
                     drop-shadow-md
                     right-5

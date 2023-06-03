@@ -29,7 +29,6 @@ const SongSlider: React.FC<SliderProps> = ({
     const prevValue = usePrevious([value]);
 
     return (
-        <form>
         <SliderPrimitive.Root
             className="
                 relative
@@ -38,7 +37,7 @@ const SongSlider: React.FC<SliderProps> = ({
                 items-center
                 select-none
                 touch-none
-                w-full
+                w-auto
                 h-15
                 m-2
                 hover:cursor-pointer
@@ -71,23 +70,18 @@ const SongSlider: React.FC<SliderProps> = ({
                         absolute
                         bg-white
                         group-hover:bg-gradient-to-r
-                        group-hover:from-green-200 
-                        group-hover:via-green-300 
-                        group-hover:to-blue-500
-                        active:from-green-200 
-                        active:via-green-300 
-                        active:to-blue-500
+                        group-hover:from-teal-200 
+                        group-hover:to-indigo-300
                         rounded-full
                         h-full
-                    "
+                     "
                 />
             </SliderPrimitive.Track>
             <SliderPrimitive.Thumb 
-            className="block invisible group-hover:visible w-3 h-3 bg-white shadow-sm rounded-md" 
+            className="block invisible group-hover:visible w-4 h-4 bg-white shadow-lg rounded-lg" 
             aria-label="Volume"
             />
         </SliderPrimitive.Root>
-        </form>
     );
 }
  
