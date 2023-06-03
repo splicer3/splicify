@@ -95,7 +95,7 @@ const Modal:React.FC<ModalProps> = ({
                                 focus:outline-none
                             "
                         >
-                            <IoMdClose />
+                            <IoMdClose size={25}/>
                         </button>
                     </Dialog.Close>
                 </Dialog.Content>

@@ -2,6 +2,8 @@ import getSongs from "@/actions/getSongs";
 import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
 import PageContent from "./components/PageContent";
+import { useUser } from "@/hooks/useUser";
+import WelcomeItem from "@/components/WelcomeItem";
 
 export const revalidate = 0;
 
@@ -19,15 +21,7 @@ export default async function Home() {
     ">
       <Header>
         <div className="mb-2">
-          <h1
-            className="
-              text-white
-              text-3xl
-              font-semibold
-            "
-          >
-            Welcome back
-          </h1>
+          <WelcomeItem />
           <div
             className="
               grid
@@ -40,7 +34,7 @@ export default async function Home() {
             "
           >
             <ListItem
-              image="/images/liked.png"
+              image="/images/likedImage.png"
               name="Liked Songs"
               href="liked"
             />
