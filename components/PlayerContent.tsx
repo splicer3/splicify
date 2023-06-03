@@ -5,11 +5,13 @@ import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2"
 import { useEffect, useState } from "react";
 import useSound from "use-sound";
+import * as RadixSlider from "@radix-ui/react-slider"
 
 import { Song } from "@/types";
 import MediaItem from "./MediaItem";
 import LikeButton from "./LikeButton";
-import Slider from "./Slider";
+import VolumeSlider from "./VolumeSlider";
+import SongSlider from "./SongSlider";
 import usePlayer from "@/hooks/usePlayer";
 
 interface PlayerContentProps {
@@ -58,7 +60,14 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
         player.setId(previousSong)
     };
 
-    const [play, { pause, sound }] = useSound(
+    const [currTime, setCurrTime] = useState({
+        min: 0,
+        sec: 0,
+    })
+
+    const [seconds, setSeconds] = useState(0);
+
+    const [play, { pause, duration, sound }] = useSound(
         songUrl,
         {
             volume: volume,
@@ -80,13 +89,38 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
         }
     }, [sound]);
 
+    useEffect(() => {
+        const sec = duration != null ? duration / 1000 : 0;
+        const min = Math.floor(sec / 60);
+        const secRemain = Math.floor(sec % 60);
+        const time = {
+          min: min,
+          sec: secRemain,
+        };
+    });
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (sound && isPlaying) {
+              setSeconds(sound.seek([])); // setting the seconds state with the current state
+              const min = Math.floor(sound.seek([]) / 60);
+              const sec = Math.floor(sound.seek([]) % 60);
+              setCurrTime({
+                min,
+                sec,
+              });
+            }
+          }, 1000);
+          return () => clearInterval(interval);
+    });
+
     const handlePlay = () => {
         if (!isPlaying) {
             play();
         } else {
             pause();
         }
-    };
+    }
 
     const toggleMute = () => {
         if (volume === 0) {
@@ -95,17 +129,21 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
             setVolume(0)
         }
     };
+
+    const setSongProgress = (value: number) => {
+        sound.seek([value]);
+    }
     
     return (
 
-        <div className="grid grid-cols-2 md:grid-cols-3 h-full">
+        <div className="grid grid-cols-3 h-full">
             <div className="flex h-full justify-start">
                 <div className="flex items-center gap-x-4">
                     <MediaItem data={song}/>
                     <LikeButton songId={song.id}/>
                 </div>
             </div>
-            <div className="flex md:hidden col-auto w-full justify-end items-center">
+            <div className="flex md:hidden col-auto w-full justify-center items-center">
                 <div
                     onClick={handlePlay}
                     className="
@@ -126,7 +164,8 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                     <Icon size={30} className="text-black"/>
                 </div>
             </div>
-            <div className="hidden h-full md:flex justify-center items-center w-full max-w-[722px] gap-x-6">
+            <div className="h-full flex flex-col">
+                <div className="hidden h-full md:flex justify-center items-center w-full max-w-[722px] gap-x-6">
                 <div>
                     <AiFillStepBackward
                         size={30}
@@ -171,6 +210,13 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                         "
                     />
                 </div>
+                </div>
+                <SongSlider
+                    value={seconds}
+                    onChange={(value) => setSeconds(value)}
+                    onCommit={(value) => setSongProgress(value)}
+                    max={duration != null ? duration / 1000 : 0}
+                />
             </div>
             <div className="hidden md:flex w-full justify-end pr-2">
                 <div className="flex items-center gap-x-2 w-[120px]">
@@ -179,7 +225,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                         className="cursor-pointer hover:opacity-75 hover:scale-95 transition"
                         size={34}
                     />
-                    <Slider
+                    <VolumeSlider
                         value={volume}
                         onChange={(value) => setVolume(value)}
                     />

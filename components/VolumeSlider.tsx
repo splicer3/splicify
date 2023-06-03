@@ -1,13 +1,13 @@
 "use client";
 
-import * as RadixSlider from "@radix-ui/react-slider"
+import * as SliderPrimitive from "@radix-ui/react-slider"
 
 interface SliderProps {
     value?: number;
     onChange?: (value: number) => void;
 };
 
-const Slider: React.FC<SliderProps> = ({
+const VolumeSlider: React.FC<SliderProps> = ({
     value = 1,
     onChange,
 }) => {
@@ -16,7 +16,7 @@ const Slider: React.FC<SliderProps> = ({
     }
 
     return (
-        <RadixSlider.Root
+        <SliderPrimitive.Root
             className="
                 relative
                 flex
@@ -34,7 +34,7 @@ const Slider: React.FC<SliderProps> = ({
             max={1}
             step={0.1}
         >
-            <RadixSlider.Track
+            <SliderPrimitive.Track
                 className="
                     bg-neutral-600
                     relative
@@ -45,7 +45,7 @@ const Slider: React.FC<SliderProps> = ({
                     transition
                 "
             >
-                <RadixSlider.Range
+                <SliderPrimitive.Range
                     className="
                         absolute
                         bg-white
@@ -55,10 +55,10 @@ const Slider: React.FC<SliderProps> = ({
                         h-full
                     "
                 />
-            </RadixSlider.Track>
-            <RadixSlider.Thumb className="block invisible group-hover:visible w-3 h-3 bg-white shadow-sm rounded-md" aria-label="Volume" />
-        </RadixSlider.Root>
+            </SliderPrimitive.Track>
+            <SliderPrimitive.Thumb className="block invisible group-hover:visible w-3 h-3 bg-white shadow-sm rounded-md" aria-label="Volume" />
+        </SliderPrimitive.Root>
     );
 }
  
-export default Slider;
+export default VolumeSlider;
