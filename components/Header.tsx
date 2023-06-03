@@ -157,6 +157,7 @@ const Header: React.FC<HeaderProps> = ({
                                         text-neutral-300
                                         font-medium
                                     "
+                                    
                                 >
                                     Sign Up
                                 </Button>
