@@ -164,7 +164,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                     <Icon size={30} className="text-black"/>
                 </div>
             </div>
-            <div className="h-full flex flex-col">
+            <div className="h-full flex flex-col justify-center justify-items-center">
                 <div className="hidden h-full md:flex justify-center items-center w-full max-w-[722px] gap-x-6">
                 <div>
                     <AiFillStepBackward

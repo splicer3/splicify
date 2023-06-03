@@ -49,8 +49,13 @@ const VolumeSlider: React.FC<SliderProps> = ({
                     className="
                         absolute
                         bg-white
-                        group-hover:bg-green-500
-                        active:bg-green-500
+                        group-hover:bg-gradient-to-r
+                        group-hover:from-green-200 
+                        group-hover:via-green-300 
+                        group-hover:to-blue-500
+                        active:from-green-200 
+                        active:via-green-300 
+                        active:to-blue-500
                         rounded-full
                         h-full
                     "

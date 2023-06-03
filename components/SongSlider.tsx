@@ -40,6 +40,7 @@ const SongSlider: React.FC<SliderProps> = ({
                 touch-none
                 w-full
                 h-15
+                m-2
                 hover:cursor-pointer
             "
             defaultValue={[defaultValue]}
@@ -60,7 +61,7 @@ const SongSlider: React.FC<SliderProps> = ({
                     relative
                     grow
                     rounded-full
-                    h-[4px]
+                    h-[7px]
                     group-hover:scale-y-150
                     transition
                 "
