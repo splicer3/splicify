@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaPlay } from "react-icons/fa"
 import LikeButton from "./LikeButton";
+import { useUser } from "@/hooks/useUser";
+import useAuthModal from "@/hooks/useAuthModal";
 
 interface ListItemProps {
     image: string;
@@ -17,9 +19,13 @@ const ListItem: React.FC<ListItemProps> = ({
     href,
 }) => {
     const router = useRouter();
+    const { user } = useUser();
+    const authModal = useAuthModal();
 
     const onClick = () => {
-        // Add auth before push
+        if (!user) {
+            return authModal.onOpen();
+        }
         router.push(href)
     }
     return (
