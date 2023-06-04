@@ -15,6 +15,7 @@ import { useUser } from "@/hooks/useUser";
 import usePlayer from "@/hooks/usePlayer";
 import { LikedSongsContext } from "@/contexts/LikedSongsContext";
 import { useContext } from "react";
+import { FiGithub } from "react-icons/fi";
 
 interface HeaderProps {
     children: React.ReactNode;
@@ -127,6 +128,20 @@ const Header: React.FC<HeaderProps> = ({
                                 transition
                             ">
                         <BiSearch className="text-black" size={20} />
+                    </button>
+                    <button
+                        onClick={() => router.push('https://github.com')}
+                        className="
+                                rounded-full
+                                p-2
+                                bg-white
+                                flex
+                                items-center
+                                justify-center
+                                hover:opacity-75
+                                transition
+                            ">
+                        <FiGithub className="text-black" size={20} />
                     </button>
                 </div>
                 <div
