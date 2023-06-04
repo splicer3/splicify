@@ -33,13 +33,14 @@ const SongSlider: React.FC<SliderProps> = ({
             className="
                 relative
                 flex
+                grow
                 group
                 items-center
                 select-none
                 touch-none
                 w-auto
-                h-15
-                m-2
+                max-w-xl
+                h-5
                 hover:cursor-pointer
             "
             defaultValue={[defaultValue]}
@@ -52,7 +53,8 @@ const SongSlider: React.FC<SliderProps> = ({
                 if (String(prevValue) !== String(value)) {
                     onCommit?.(value);
                   }
-            }}
+                }
+            }
         >
             <SliderPrimitive.Track
                 className="
@@ -72,6 +74,9 @@ const SongSlider: React.FC<SliderProps> = ({
                         group-hover:bg-gradient-to-r
                         group-hover:from-teal-200 
                         group-hover:to-indigo-300
+                        group-active:bg-gradient-to-r
+                        group-active:from-teal-200 
+                        group-active:to-indigo-300
                         rounded-full
                         h-full
                      "

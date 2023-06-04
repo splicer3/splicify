@@ -53,6 +53,8 @@ const LikeButton: React.FC<LikeButtonProps> = ({ songId }) => {
       return authModal.onOpen();
     }
 
+    
+
     try {
       if (isLiked) {
         const { error } = await supabaseClient
@@ -64,6 +66,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ songId }) => {
         setLikedSongs((prevLikedSongs) =>
           prevLikedSongs.filter((id) => id !== songId)
         );
+        
         setIsLiked(false);
       } else {
             const { error } = await supabaseClient
@@ -90,7 +93,14 @@ const LikeButton: React.FC<LikeButtonProps> = ({ songId }) => {
   return (
     <button
       onClick={handleLike}
-      className="hover:opacity-75 hover:scale-110 group/songitem:invisible group-hover/songitem:visible transition"
+      className={
+        `hover:opacity-75
+        hover:scale-110
+        group/songitem:invisible
+        group-hover/songitem:visible
+        transition
+        ${isLiked ? 'animate-jump animate-once animate-duration-[350ms] animate-delay-0 animate-ease-out animate-normal animate-fill-both' : ''}`
+      }
     >
       <Icon color={isLiked ? "#74e3da" : "white"} size={25} />
     </button>

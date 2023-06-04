@@ -5,7 +5,6 @@ import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2"
 import { useEffect, useState } from "react";
 import useSound from "use-sound";
-import * as RadixSlider from "@radix-ui/react-slider"
 
 import { Song } from "@/types";
 import MediaItem from "./MediaItem";
@@ -136,15 +135,16 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
     
     return (
 
-        <div className="grid grid-cols-2 md:grid-cols-3 h-full">
-            <div className="flex h-full justify-start">
+        <div className="flex flex-col justify-between items-center h-full">
+        <div className="grid md:grid-cols-3 grid-cols-1 w-full">
+            <div className="flex h-full justify-center md:justify-start">
                 <div className="flex items-center gap-x-4">
                     <MediaItem data={song}/>
                     <LikeButton songId={song.id}/>
                 </div>
             </div>
-            <div className="h-full w-full flex flex-col justify-center justify-items-center">
-                <div className="h-full flex justify-center items-center w-full max-w-[722px] gap-x-6">
+            <div className="hidden md:flex h-full w-full justify-end md:justify-center justify-items-center">
+                <div className="h-full flex justify-end md:justify-center items-center w-full max-w-[722px] gap-x-6">
                 <div>
                     <AiFillStepBackward
                         size={30}
@@ -201,14 +201,8 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                     />
                 </div>
                 </div>
-                <SongSlider
-                    value={seconds}
-                    onChange={(value) => setSeconds(value)}
-                    onCommit={(value) => setSongProgress(value)}
-                    max={duration != null ? duration / 1000 : 0}
-                />
             </div>
-            <div className="hidden md:flex w-full justify-end pr-2">
+            <div className="hidden md:flex justify-end w-auto pr-2">
                 <div className="flex items-center gap-x-2 w-[120px]">
                     <VolumeIcon
                         onClick={toggleMute}
@@ -220,6 +214,72 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                         onChange={(value) => setVolume(value)}
                     />
                 </div>
+            </div>
+        </div>
+        <div className="flex md:hidden justify-center items-center gap-x-6 w-full h-full">
+            <div>
+                    <AiFillStepBackward
+                        size={30}
+                        onClick={onPlayPrevious}
+                        className="
+                            text-white
+                            md:text-neutral-400
+                            cursor-pointer
+                            md:hover:text-white
+                            hover:scale-90
+                            hover:opacity-75
+                            md:hover:scale-110
+                            md:hover:opacity-100
+                            transition
+                        "
+                    />
+                </div>
+                <div
+                    onClick={handlePlay}
+                    className="
+                        flex
+                        items-center
+                        justify-center
+                        h-10
+                        w-10
+                        rounded-full
+                        bg-white
+                        p-1
+                        cursor-pointer
+                        hover:scale-95
+                        hover:opacity-75
+                        md:hover:scale-105
+                        md:hover:opacity-100
+                        transition
+                    "
+                >
+                    <Icon size={30} className="text-black right-4"/>
+                </div>
+                <div>
+                    <AiFillStepForward
+                        onClick={onPlayNext}
+                        size={30}
+                        className="
+                            text-white
+                            md:text-neutral-400
+                            cursor-pointer
+                            md:hover:text-white
+                            hover:scale-90
+                            hover:opacity-75
+                            md:hover:scale-110
+                            md:hover:opacity-100
+                            transition
+                        "
+                    />
+                </div>
+            </div>
+            <div className="flex justify-center w-full max-w-2xl h-auto mb-1">
+            <SongSlider
+                    value={seconds}
+                    onChange={(value) => setSeconds(value)}
+                    onCommit={(value) => setSongProgress(value)}
+                    max={duration != null ? duration / 1000 : 0}
+                />
             </div>
         </div>
     );
