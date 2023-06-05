@@ -127,7 +127,7 @@ const Header: React.FC<HeaderProps> = ({
                         <BiSearch className="text-black" size={20} />
                     </button>
                     <button
-                        onClick={() => router.push('https://github.com')}
+                        onClick={() => router.push('https://github.com/splicer3/splicify')}
                         className="
                                 rounded-full
                                 p-2

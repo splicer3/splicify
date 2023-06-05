@@ -42,7 +42,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         {
             icon:FiGithub,
             label:"Github Repo",
-            href:"https://github.com/",
+            href:"https://github.com/splicer3/splicify",
         }
     ], [pathname])
 
