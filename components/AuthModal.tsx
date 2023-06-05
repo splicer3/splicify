@@ -6,7 +6,7 @@ import useAuthModal from "@/hooks/useAuthModal";
 import { useSessionContext, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/navigation";
 import { Auth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { ThemeMinimal, ThemeSupa } from "@supabase/auth-ui-shared";
 import { useEffect } from "react";
 
 const AuthModal = () => {
@@ -46,7 +46,7 @@ const AuthModal = () => {
                         default: {
                             colors: {
                                 brand: '#404040',
-                                brandAccent: '#22c55e'
+                                brandAccent: '#74e3da'
                             }
                         }
                     }

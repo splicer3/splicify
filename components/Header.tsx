@@ -13,8 +13,6 @@ import Button from "./Button";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
 import usePlayer from "@/hooks/usePlayer";
-import { LikedSongsContext } from "@/contexts/LikedSongsContext";
-import { useContext } from "react";
 import { FiGithub } from "react-icons/fi";
 
 interface HeaderProps {
@@ -32,7 +30,6 @@ const Header: React.FC<HeaderProps> = ({
     const supabaseClient = useSupabaseClient();
     const { user } = useUser();
     const player = usePlayer();
-    const { likedSongs, setLikedSongs } = useContext(LikedSongsContext);
 
     const handleLogout = async () => {
         const { error } = await supabaseClient.auth.signOut();

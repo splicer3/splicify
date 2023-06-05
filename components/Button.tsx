@@ -17,14 +17,16 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
          className={twMerge(`
             w-full
             rounded-full
-            bg-green-500
+            bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]
+            from-teal-400
+            to-indigo-700
             border
             border-transparent
             px-3
             py-3
             disabled:cursor-not-allowed
             disabled-opacity-50
-            text-black
+            text-neutral-800
             font-bold
             hover:opacity-75
             transition
