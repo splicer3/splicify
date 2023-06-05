@@ -137,8 +137,8 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
 
         <div className="flex flex-col justify-between items-center h-full">
         <div className="grid md:grid-cols-3 grid-cols-1 w-full">
-            <div className="flex h-full justify-center md:justify-start">
-                <div className="flex items-center gap-x-4">
+            <div className="flex h-full w-auto justify-center md:justify-start shrink">
+                <div className="flex items-center gap-x-4 overflow-hidden">
                     <MediaItem data={song}/>
                     <LikeButton songId={song.id}/>
                 </div>

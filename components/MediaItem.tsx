@@ -39,10 +39,12 @@ const MediaItem: React.FC<MediaItemProps> = ({
                 max-w-full
                 p-2
                 rounded-md
+                overflow-hidden
             "
         >
             <div className="
                     relative
+                    flex
                     rounded-md
                     min-h-[48px]
                     min-w-[48px]

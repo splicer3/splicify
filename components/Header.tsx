@@ -9,11 +9,12 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { FaUserAlt } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 
+
 import Button from "./Button";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
 import usePlayer from "@/hooks/usePlayer";
-import { FiGithub } from "react-icons/fi";
+import { TbPlaylist } from "react-icons/tb";
 
 interface HeaderProps {
     children: React.ReactNode;
@@ -97,7 +98,7 @@ const Header: React.FC<HeaderProps> = ({
                         <RxCaretRight className="text-white" size={35}/>
                     </button>
                 </div>
-                <div className="flex md:hidden gap-x-2 items-center">
+                <div className="flex md:hidden gap-x-2 items-center mr-2">
                     <button
                         onClick={() => router.push('/')}
                         className="
@@ -127,7 +128,7 @@ const Header: React.FC<HeaderProps> = ({
                         <BiSearch className="text-black" size={20} />
                     </button>
                     <button
-                        onClick={() => router.push('https://github.com/splicer3/splicify')}
+                        onClick={() => router.push('/library')}
                         className="
                                 rounded-full
                                 p-2
@@ -138,7 +139,7 @@ const Header: React.FC<HeaderProps> = ({
                                 hover:opacity-75
                                 transition
                             ">
-                        <FiGithub className="text-black" size={20} />
+                        <TbPlaylist className="text-black" size={20} />
                     </button>
                 </div>
                 <div
