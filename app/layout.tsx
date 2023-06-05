@@ -8,7 +8,7 @@ import ModalProvider from '@/providers/ModalProvider'
 import ToasterProvider from '@/providers/ToasterProvider'
 import getSongsByUserId from '@/actions/getSongsByUserId'
 import Player from '@/components/Player'
-import { LikedSongsProvider } from '@/contexts/LikedSongsContext'
+import { LikedSongsProvider } from '@/hooks/useLikedSongs'
 import getActiveProductsWithPrices from '@/actions/getActiveProductsWithPrices'
 
 const font = Figtree({ subsets: ['latin'] })

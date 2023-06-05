@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useSessionContext } from "@supabase/auth-helpers-react";
 import { toast } from "react-hot-toast";
 
-import { LikedSongsContext } from "@/contexts/LikedSongsContext";
+import { LikedSongsContext, useLikedSongs } from "@/hooks/useLikedSongs";
 import { useUser } from "@/hooks/useUser";
 import useAuthModal from "@/hooks/useAuthModal";
 
@@ -19,7 +19,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ songId }) => {
   const authModal = useAuthModal();
   const { user } = useUser();
 
-  const { likedSongs, setLikedSongs } = useContext(LikedSongsContext);
+  const { likedSongs, setLikedSongs } = useLikedSongs();
   const [isLiked, setIsLiked] = useState(false);
 
   const fetchData = async () => {
