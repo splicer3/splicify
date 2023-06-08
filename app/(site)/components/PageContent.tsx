@@ -1,17 +1,27 @@
 "use client";
 
 import SongItem from "@/components/SongItem";
+import { useLikedSongs } from "@/hooks/useLikedSongs";
 import useOnPlay from "@/hooks/useOnPlay";
 import { Song } from "@/types";
+import { useEffect } from "react";
 
 interface PageContentProps {
     songs: Song[];
+    fetchedLikedSongs: Song[];
 }
 
 const PageContent: React.FC<PageContentProps> = ({
     songs,
+    fetchedLikedSongs
 }) => {
     const onPlay = useOnPlay(songs);
+    const {likedSongs, setLikedSongs} = useLikedSongs();
+    const fetchedLikedSongsIds = fetchedLikedSongs?.map((item) => item.id)
+
+    useEffect(() => {
+            setLikedSongs((prevLikedSongs) => [...prevLikedSongs, ...fetchedLikedSongsIds])
+    }, [fetchedLikedSongs]);
 
     if (songs.length === 0) {
         return (

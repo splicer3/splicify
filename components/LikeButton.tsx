@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useSessionContext } from "@supabase/auth-helpers-react";
 import { toast } from "react-hot-toast";
 
-import { LikedSongsContext, useLikedSongs } from "@/hooks/useLikedSongs";
+import { useLikedSongs } from "@/hooks/useLikedSongs";
 import { useUser } from "@/hooks/useUser";
 import useAuthModal from "@/hooks/useAuthModal";
 
@@ -21,29 +21,14 @@ const LikeButton: React.FC<LikeButtonProps> = ({ songId }) => {
 
   const { likedSongs, setLikedSongs } = useLikedSongs();
   const [isLiked, setIsLiked] = useState(false);
-
-  const fetchData = async () => {
-    const { data, error } = await supabaseClient
-                                    .from('liked_songs')
-                                    .select('*')
-                                    .eq('user_id', user?.id)
-                                    .eq('song_id', songId)
-                                    .single();
-    
-    if (!error && data) {
-        setIsLiked(true);
-    }
-  }
-
-  fetchData();
   
 
   useEffect(() => {
-    if (likedSongs.includes(songId)) {
-      setIsLiked(true);
-    } else {
-      setIsLiked(false);
-    }
+        if (likedSongs.includes(songId)) {
+          setIsLiked(true);
+        } else {
+          setIsLiked(false);
+        }
   }, [likedSongs, songId]);
 
   const Icon = isLiked ? AiFillHeart : AiOutlineHeart;

@@ -3,11 +3,13 @@ import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
 import PageContent from "./components/PageContent";
 import WelcomeItem from "@/components/WelcomeItem";
+import getLikedSongs from "@/actions/getLikedSongs";
 
 export const revalidate = 0;
 
 export default async function Home() {
   const songs = await getSongs();
+  const likedSongs = await getLikedSongs();
 
   return (
     <div className="
@@ -46,7 +48,7 @@ export default async function Home() {
             Newest songs
           </h1>
         </div>
-        <PageContent songs={songs}/>
+        <PageContent songs={songs} fetchedLikedSongs={likedSongs}/>
       </div>
     </div>
   )

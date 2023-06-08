@@ -37,6 +37,7 @@ export const MyUserContextProvider = (props: Props) => {
             .from('users')
             .select('*')
             .single();
+            
     const getSubscription = () =>
         supabase
             .from('subscriptions')
@@ -69,6 +70,7 @@ export const MyUserContextProvider = (props: Props) => {
             setSubscription(null);
         }
     }, [user, isLoadingUser])
+
     const value = {
         accessToken,
         user,
